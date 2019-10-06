@@ -111,3 +111,67 @@
 
 # Code 
 
+// Start a Session
+session_start();
+
+// print_r($_SESSION);
+
+// Generate a random number
+// $rand_number = rand(0, 100);
+
+// set a numbers array for use
+$numbers = [];
+$answers = [];
+// Store in a variable so we can refer to it in our logic
+
+
+// loop to 100 and add a number each time to the array
+$count = 0;
+while ($count < 100) {
+  $numbers[] = rand(0, 100);
+  $count++;
+}
+
+// Generate the random numbers for use
+$num1 = $numbers[rand(0, 100)];
+$num2 = $numbers[rand(0, 100)];
+
+// Build out question using two numbers from our random array of integers
+  // Example: "What is " . $rand[num] . " + " .  $rand[num] . " ?"
+  $question_output = "What is " . $num1 . " + " . $num2 . " ?";
+
+  // Calculate the question
+  $calculation = $num1 + $num2;
+
+// Build the answers array
+for ($i = 0; $i < 2; $i++) {
+  $answers[$i] = rand(0, 300);
+}
+
+// Add the correct answer into the array
+$answers[2] = $calculation;
+// mix up the answers
+shuffle($answers);
+
+// Move all the answers array work into its own function
+
+
+// Sessions / cookie to track answers and question number
+// $question_count = $_SESSION['question_count'] = 1; 
+
+
+// set the total number of questions
+$total_questions = 10;
+
+// store answer as a session variable 
+if (isset($_POST['answer'])) {
+  $_SESSION['answer'] = $_POST['answer'];
+  $question += 1;
+
+}
+
+// each time the submit button is selected
+// the question should update its count by 1
+
+
+
