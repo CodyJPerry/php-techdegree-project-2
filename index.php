@@ -2,6 +2,7 @@
 
 include 'inc/quiz.php';
 
+// Store the question number
 $question = filter_input(INPUT_GET, 'q', FILTER_SANITIZE_NUMBER_INT);
 
 // Always set the variable to 1 if not set
@@ -15,6 +16,7 @@ if ($question > 10) {
   // If so redirect back to start
   header("Location: ./index.php");
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +33,7 @@ if ($question > 10) {
         <div id="quiz-box">
             <p class="breadcrumbs">Question <?php echo $question; ?> of <?php echo $total_questions; ?></p>
             <p class="quiz"><?php echo $question_output; ?></p>
-            <form action="index.php?q=<?php echo $question + 1; ?>" method="post">
+            <form action="index.php?q=<?php echo $question + 1 ?>" method="post">
                 <input type="hidden" name="id" value="<?php echo $question;?>" />
                 <input type="submit" class="btn" name="answer" value="<?php echo $answers[0]; ?>" />
                 <input type="submit" class="btn" name="answer" value="<?php echo $answers[1]; ?>" />

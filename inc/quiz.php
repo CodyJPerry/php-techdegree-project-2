@@ -32,7 +32,6 @@
 
 // Show score
 
-
 # PEDAC 
   # Mold the requirements if they are not Explicit
 
@@ -79,7 +78,6 @@
   // Number (Integer)
   // String
 
-
 # Algorithm
   # Steps for converting input to output
 
@@ -124,7 +122,6 @@ $numbers = [];
 $answers = [];
 // Store in a variable so we can refer to it in our logic
 
-
 // loop to 100 and add a number each time to the array
 $count = 0;
 while ($count < 100) {
@@ -137,11 +134,11 @@ $num1 = $numbers[rand(0, 100)];
 $num2 = $numbers[rand(0, 100)];
 
 // Build out question using two numbers from our random array of integers
-  // Example: "What is " . $rand[num] . " + " .  $rand[num] . " ?"
-  $question_output = "What is " . $num1 . " + " . $num2 . " ?";
+// Example: "What is " . $rand[num] . " + " .  $rand[num] . " ?"
+$question_output = "What is " . $num1 . " + " . $num2 . " ?";
 
-  // Calculate the question
-  $calculation = $num1 + $num2;
+// Calculate the question
+$calculation = $num1 + $num2;
 
 // Build the answers array
 for ($i = 0; $i < 2; $i++) {
@@ -153,25 +150,30 @@ $answers[2] = $calculation;
 // mix up the answers
 shuffle($answers);
 
-// Move all the answers array work into its own function
-
+// TODO: Move all the answers array work into its own function
 
 // Sessions / cookie to track answers and question number
 // $question_count = $_SESSION['question_count'] = 1; 
-
 
 // set the total number of questions
 $total_questions = 10;
 
 // store answer as a session variable 
 if (isset($_POST['answer'])) {
-  $_SESSION['answer'] = $_POST['answer'];
-  $question += 1;
-
+  $_SESSION['answer'] = $calculation;
 }
 
-// each time the submit button is selected
-// the question should update its count by 1
+if ($_SESSION['answer'] == $_POST['answer']) {
+  echo "yes";
+} 
 
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    if ($calculation == $_POST['answer']) {
+      echo "Yes";
+  }
+}
 
+// Compare the users selection with -the answers array
+// if correct display a toast that the user got the answer right
+// if wrong display a toast that the user got the answer wrong
 
