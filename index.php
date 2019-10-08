@@ -31,13 +31,14 @@ if ($question > 10) {
 <body>
     <div class="container">
         <div id="quiz-box">
+          
             <p class="breadcrumbs">Question <?php echo $question; ?> of <?php echo $total_questions; ?></p>
             <p class="quiz"><?php echo $question_output; ?></p>
             <form action="index.php?q=<?php echo $question + 1 ?>" method="post">
-                <input type="hidden" name="id" value="<?php echo $question;?>" />
-                <input type="submit" class="btn" name="answer" value="<?php echo $answers[0]; ?>" />
-                <input type="submit" class="btn" name="answer" value="<?php echo $answers[1]; ?>" />
-                <input type="submit" class="btn" name="answer" value="<?php echo $answers[2]; ?>" />
+                <input type="hidden" name="answer" value="<?php echo $answer; ?>" />
+                <input type="submit" class="btn" name="userChoice" value="<?php echo $answers[0]; ?>" />
+                <input type="submit" class="btn" name="userChoice" value="<?php echo $answers[1]; ?>" />
+                <input type="submit" class="btn" name="userChoice" value="<?php echo $answers[2]; ?>" />
             </form>
         </div>
     </div>

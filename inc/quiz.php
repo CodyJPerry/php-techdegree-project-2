@@ -112,33 +112,18 @@
 // Start a Session
 session_start();
 
-// print_r($_SESSION);
-
-// Generate a random number
-// $rand_number = rand(0, 100);
-
-// set a numbers array for use
-$numbers = [];
 $answers = [];
 // Store in a variable so we can refer to it in our logic
 
-// loop to 100 and add a number each time to the array
-$count = 0;
-while ($count < 100) {
-  $numbers[] = rand(0, 100);
-  $count++;
-}
-
 // Generate the random numbers for use
-$num1 = $numbers[rand(0, 100)];
-$num2 = $numbers[rand(0, 100)];
+$num1 = rand(0, 100);
+$num2 = rand(0, 100);
 
 // Build out question using two numbers from our random array of integers
-// Example: "What is " . $rand[num] . " + " .  $rand[num] . " ?"
 $question_output = "What is " . $num1 . " + " . $num2 . " ?";
 
 // Calculate the question
-$calculation = $num1 + $num2;
+$answer = $num1 + $num2;
 
 // Build the answers array
 for ($i = 0; $i < 2; $i++) {
@@ -146,34 +131,30 @@ for ($i = 0; $i < 2; $i++) {
 }
 
 // Add the correct answer into the array
-$answers[2] = $calculation;
+$answers[2] = $answer;
 // mix up the answers
 shuffle($answers);
 
 // TODO: Move all the answers array work into its own function
 
-// Sessions / cookie to track answers and question number
-// $question_count = $_SESSION['question_count'] = 1; 
-
 // set the total number of questions
 $total_questions = 10;
-
-// store answer as a session variable 
-if (isset($_POST['answer'])) {
-  $_SESSION['answer'] = $calculation;
-}
-
-if ($_SESSION['answer'] == $_POST['answer']) {
-  echo "yes";
-} 
-
-if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    if ($calculation == $_POST['answer']) {
-      echo "Yes";
-  }
-}
 
 // Compare the users selection with -the answers array
 // if correct display a toast that the user got the answer right
 // if wrong display a toast that the user got the answer wrong
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  
+  // Data Persistence
+  // Set Session variables for form elements
+  // filter input / escape output
+
+  $_SESSION['answer'] = filter_input(INPUT_POST, 'answer', FILTER_SANITIZE_NUMBER_INT);
+  $_SESSION['userChoice'] = filter_input(INPUT_POST, 'userChoice', FILTER_SANITIZE_NUMBER_INT);
+
+  if ($_SESSION['answer'] === $_SESSION['userChoice']) {
+    echo "Yes";
+  }
+}
 
