@@ -4,6 +4,10 @@ include 'inc/quiz.php';
 
 // Store the question number
 $question = filter_input(INPUT_GET, 'q', FILTER_SANITIZE_NUMBER_INT);
+// set total score to 0 to start
+if (!isset($_SESSION['total_score'])) {
+  $_SESSION['total_score'] = 0;
+}
 
 // Always set the variable to 1 if not set
 if (empty($question)) {
@@ -13,8 +17,9 @@ if (empty($question)) {
 // Incorporate this with show final score later
 // Do not exceed more than 10 question 
 if ($question > 10) {
-  // If so redirect back to start
-  header("Location: ./index.php");
+  echo $_SESSION['total_score'];
+  // unset the session variable at the end of the quiz
+  unset($_SESSION['total_score']);
 }
 
 ?>
@@ -31,6 +36,16 @@ if ($question > 10) {
 <body>
     <div class="container">
         <div id="quiz-box">
+          <!-- toast if correct, toast if incorrect -->
+          <!-- Redirect via hear if answer is wrong -->
+          <?php if ($_SESSION['answer'] === $_SESSION['userChoice']) { ?>
+            <div class="success">That is Correct! Great Job!</div>
+            <?php 
+            $_SESSION['total_score']++;
+            ?>
+          <?php } else { ?>
+            <div class="error">Sorry, that is incorrect. Please try again.</div>
+          <?php } ?>
           
             <p class="breadcrumbs">Question <?php echo $question; ?> of <?php echo $total_questions; ?></p>
             <p class="quiz"><?php echo $question_output; ?></p>
@@ -44,4 +59,3 @@ if ($question > 10) {
     </div>
 </body>
 </html>
-

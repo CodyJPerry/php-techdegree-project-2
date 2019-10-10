@@ -68,3 +68,18 @@ body {
 .btn:focus {
   outline: none;
 }
+
+/* Message States */
+.success {
+  background: #C7E7CF;
+  padding: 30px;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, .7);
+}
+
+.error {
+  background: #F6CBCF;
+  padding: 30px;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, .7);
+}

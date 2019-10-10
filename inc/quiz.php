@@ -113,7 +113,6 @@
 session_start();
 
 $answers = [];
-// Store in a variable so we can refer to it in our logic
 
 // Generate the random numbers for use
 $num1 = rand(0, 100);
@@ -145,16 +144,12 @@ $total_questions = 10;
 // if wrong display a toast that the user got the answer wrong
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  
+
   // Data Persistence
   // Set Session variables for form elements
   // filter input / escape output
-
+  // set session variables
   $_SESSION['answer'] = filter_input(INPUT_POST, 'answer', FILTER_SANITIZE_NUMBER_INT);
   $_SESSION['userChoice'] = filter_input(INPUT_POST, 'userChoice', FILTER_SANITIZE_NUMBER_INT);
-
-  if ($_SESSION['answer'] === $_SESSION['userChoice']) {
-    echo "Yes";
-  }
 }
 
