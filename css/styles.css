@@ -1,16 +1,16 @@
-/* Random Quote Generator Styles */
-
 body {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Raleway', serif;
 }
 
 #quiz-box {
-  position: absolute;
-  top: 20%;
-  left: 10%;
-  right: 10%;
-  width: 80%;
-  line-height: .5;
+  margin-top: 80px;
+  line-height: 1;
+}
+
+.container {
+  max-width: fit-content;
+  margin: 0 auto;
+  position: relative;
 }
 
 .quiz {
@@ -82,4 +82,8 @@ body {
   padding: 30px;
   border-radius: 4px;
   color: rgba(0, 0, 0, .7);
+}
+
+.fade-msg-out {
+  display: none;
 }

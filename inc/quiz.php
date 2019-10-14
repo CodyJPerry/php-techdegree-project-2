@@ -134,22 +134,25 @@ $answers[2] = $answer;
 // mix up the answers
 shuffle($answers);
 
-// TODO: Move all the answers array work into its own function
-
 // set the total number of questions
 $total_questions = 10;
 
-// Compare the users selection with -the answers array
-// if correct display a toast that the user got the answer right
-// if wrong display a toast that the user got the answer wrong
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-  // Data Persistence
-  // Set Session variables for form elements
-  // filter input / escape output
   // set session variables
   $_SESSION['answer'] = filter_input(INPUT_POST, 'answer', FILTER_SANITIZE_NUMBER_INT);
   $_SESSION['userChoice'] = filter_input(INPUT_POST, 'userChoice', FILTER_SANITIZE_NUMBER_INT);
+}
+
+// Store the question number
+$question = filter_input(INPUT_GET, 'q', FILTER_SANITIZE_NUMBER_INT);
+// ensure the session variable is not set
+// set total score to 0 to start
+if (!isset($_SESSION['total_score'])) {
+  $_SESSION['total_score'] = 0;
+}
+
+// Set the question value to 1 if empty
+if (empty($question)) {
+  $question = 1;
 }
 
