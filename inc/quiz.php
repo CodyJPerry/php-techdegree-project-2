@@ -137,6 +137,7 @@ shuffle($answers);
 // set the total number of questions
 $total_questions = 10;
 
+// Filter Input / Escape Output
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   // set session variables
   $_SESSION['answer'] = filter_input(INPUT_POST, 'answer', FILTER_SANITIZE_NUMBER_INT);

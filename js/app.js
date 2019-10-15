@@ -4,4 +4,8 @@ if (window.location.search) {
   // add animation using animate.css library for success and error states
   const responseMsg = document.querySelector('.user-msg')
   responseMsg.classList.add('animated', 'zoomOut', 'delay-2s')
+  // remove user message after 3 seconds 
+  setTimeout(function () {
+    responseMsg.style.display = 'none'
+  }, 2000)
 }

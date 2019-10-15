@@ -16,6 +16,7 @@ include 'inc/quiz.php';
 <body>
     <div class="container">
         <div id="quiz-box">
+          <h1>Welcome to MathQuiz</h1>
           <!-- Toast Message
               Display a message for 2 seconds to user
               based on correct or incorrect status -->
@@ -40,9 +41,10 @@ include 'inc/quiz.php';
             </form>
          <?php } else if ($question > 10) { ?>
             <!-- Show final score and Ask user if they want to attempt quiz again -->
-            <p>Final Score: <?php echo $_SESSION['total_score']; ?></p>
-               <form action="index.php" method="post">
-                <input type="submit" name="retakeQuiz" value="yes">
+            <p class="score-message">The Final Score for this quiz attempt is: <strong><?php echo $_SESSION['total_score']; ?> / 10</strong></p>
+            <p class="retakeAttempt">Would you like to improve the final Score?</p>
+               <form class="retakeForm" action="index.php" method="post">
+                <input type="submit" name="retakeQuiz" value="Yes">
               </form>
              <?php unset($_SESSION['total_score'])?>
          <?php } ?>

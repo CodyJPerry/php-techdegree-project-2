@@ -1,10 +1,22 @@
 body {
-  font-family: 'Raleway', serif;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #A1CDF1;
 }
 
 #quiz-box {
-  margin-top: 80px;
   line-height: 1;
+  background: #f4f4f4;
+  padding: 20px 60px;
+  margin: 60px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.22);
+-moz-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.22);
+box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.22);
+}
+
+#quiz-box h1 {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .container {
@@ -14,37 +26,11 @@ body {
 }
 
 .quiz {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 400;
   line-height: 1.1;
   position: relative;
   margin: 0;
-}
-
-.source {
-  font-size: 1.25rem;;
-  letter-spacing: 0.05em;
-  line-height: 1.1;
-  text-align: right;
-  margin-right: 4em;
-}
-
-.source:before {
-  content: "—";
-}
-
-.citation {
-  font-style: italic;
-}
-
-.citation:before {
-  content: ", ";
-  font-style: normal;
-}
-
-.year:before {
-  content: ", ";
-  font-style: normal;
 }
 
 .btn {
@@ -59,6 +45,8 @@ body {
   margin: 10px;
   transition: .5s ;
   text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 .btn:hover {
   background-color: #FFF;
@@ -84,6 +72,85 @@ body {
   color: rgba(0, 0, 0, .7);
 }
 
-.fade-msg-out {
-  display: none;
+/* Breadcrumbs */
+.breadcrumbs {
+  font-size: 1.15rem;
+  color: rgba(0, 0, 0, .65);
+  text-transform: uppercase;
+}
+
+/* Score Message */
+.score-message {
+  font-size: 1.2rem;
+}
+
+/* Retake Form Elements */
+.retakeAttempt, .retakeForm {
+  display: inline-block;
+  font-size: 1.1rem;
+}
+
+.retakeForm input[type="submit"] {
+  bordeR: none;
+  background: #f4f4f4;
+  color: blue;
+  font-weight: bold;
+}
+
+/* Media Queries */
+@media (max-width: 885px) {
+    .btn {
+      width: 10em;
+      display: inline-block;
+      bottom: 150px;
+      border-radius: 4px;
+      border: 2px solid #000;
+      color: #fff;
+      background-color: #000;
+      padding: 15px;
+      margin: 10px;
+      transition: .5s;
+      text-decoration: none;
+  }
+} 
+
+@media (max-width: 791px) {
+    .btn {
+      width: 8em;
+  }
+
+  #quiz-box h1 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 695px) {
+    .btn {
+      width: 6em;
+  }
+
+  .quiz {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .btn {
+    display: block;
+    width: 100%;
+  }
+
+  .breadcrumbs {
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .quiz {
+    font-size: 1.9rem;
+    font-weight: 400;
+    line-height: 1.1;
+    position: relative;
+    margin: 0;
+  }
 }
