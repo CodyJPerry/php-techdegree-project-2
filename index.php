@@ -1,6 +1,5 @@
 <?php 
 include 'inc/quiz.php';
-
 ?>
 
 <!DOCTYPE html>
