@@ -34,9 +34,9 @@ include 'inc/quiz.php';
             <p class="quiz"><?php echo $question_output; ?></p>
             <form action="index.php?q=<?php echo $question + 1 ?>" method="post">
                 <input type="hidden" name="answer" value="<?php echo $answer; ?>" />
+                <input type="submit" class="btn" name="userChoice" value="<?php echo $answers[rand(0, 100)]; ?>" />
                 <input type="submit" class="btn" name="userChoice" value="<?php echo $answers[0]; ?>" />
-                <input type="submit" class="btn" name="userChoice" value="<?php echo $answers[1]; ?>" />
-                <input type="submit" class="btn" name="userChoice" value="<?php echo $answers[2]; ?>" />
+                <input type="submit" class="btn" name="userChoice" value="<?php echo $answers[rand(0, 100)]; ?>" />
             </form>
          <?php } else if ($question > 10) { ?>
             <!-- Show final score and Ask user if they want to attempt quiz again -->

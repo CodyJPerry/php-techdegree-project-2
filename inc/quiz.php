@@ -124,15 +124,26 @@ $question_output = "What is " . $num1 . " + " . $num2 . " ?";
 // Calculate the question
 $answer = $num1 + $num2;
 
-// Build the answers array
-for ($i = 0; $i < 2; $i++) {
-  $answers[$i] = rand(0, 300);
+// Add to the answers array
+$answers[] = $answer;
+$answers[] = $answer + rand(0, 10);
+$answers[] = $answer - rand(0, 10);
+
+// Build the answers array with possible answers
+for ($i = 0; $i < 100; $i++) {
+  if ($i % 2 === 0) {
+    $answers[$i] = $answer + rand(0, 10);
+  } else {
+    $answers[$i] = $answer - rand(0, 10);
+  }
 }
 
-// Add the correct answer into the array
-$answers[2] = $answer;
-// mix up the answers
+// Mix up answers array
 shuffle($answers);
+
+// Add real answer as first element
+$answers[0] = $answer;
+
 
 // set the total number of questions
 $total_questions = 10;
@@ -156,4 +167,3 @@ if (!isset($_SESSION['total_score'])) {
 if (empty($question)) {
   $question = 1;
 }
-
