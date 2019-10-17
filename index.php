@@ -10,12 +10,13 @@ include 'inc/quiz.php';
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="container">
         <div id="quiz-box">
-          <h1>Welcome to MathQuiz</h1>
+          <h1><i class="fas fa-graduation-cap mr-3"></i> Welcome to MathQuiz <i class="fas fa-graduation-cap ml-3"></i></h1>
           <!-- Toast Message
               Display a message for 2 seconds to user
               based on correct or incorrect status -->
@@ -34,9 +35,9 @@ include 'inc/quiz.php';
             <p class="quiz"><?php echo $question_output; ?></p>
             <form action="index.php?q=<?php echo $question + 1 ?>" method="post">
                 <input type="hidden" name="answer" value="<?php echo $answer; ?>" />
-                <input type="submit" class="btn" name="userChoice" value="<?php echo $answers[rand(0, 100)]; ?>" />
                 <input type="submit" class="btn" name="userChoice" value="<?php echo $answers[0]; ?>" />
-                <input type="submit" class="btn" name="userChoice" value="<?php echo $answers[rand(0, 100)]; ?>" />
+                <input type="submit" class="btn" name="userChoice" value="<?php echo $answers[1]; ?>" />
+                <input type="submit" class="btn" name="userChoice" value="<?php echo $answers[2]; ?>" />
             </form>
          <?php } else if ($question > 10) { ?>
             <!-- Show final score and Ask user if they want to attempt quiz again -->
